@@ -5,11 +5,11 @@ import ipaddress # This will simulate the source of events like the attackers IP
 def generate_system_logs(num_entries=20): #This defines the function generate_system_logs and creates the fake log entries now by default it will create 20 of them
     logs = [] # This will create an empty list to store when each log is generated
     event_types = ['login', 'file_access', 'process_start', 'network_connection', 'ransomware_activity'] # Creating a list of all the possible system event types
-    countries = ['US', 'CN', 'RU', 'BR', 'IN', 'DE', 'FR', 'NG', 'KR', 'IR'] # I am setting a list here of country codes to get randomly assigned to each of the log entires
+    countries = ['US', 'CN', 'RU', 'BR', 'IN', 'DE', 'FR', 'NG', 'KR', 'IR'] # I am setting a list here of country codes to get randomly assigned to each of the log entries
     for _ in range(num_entries): # This begins a for loop to run the num_entries 20 times by default to create a fake system log entry each time
-        event = random.choice(event_types) # This randomly picks an event type that I defined earlier for the log entires
+        event = random.choice(event_types) # This randomly picks an event type that I defined earlier for the log entries
         timestamp = datetime.datetime.now() - datetime.timedelta(minutes=random.randint(1, 10000)) # This will take the current time and subtract a random number of minutes from it to simulate the past event times
-        ip = str(ipaddress.IPv4Address(random.randint(0, 2**32 - 1))) # It will randomly pick a number between 0 and the max possible IPv4 address and it will make it look like a real IP address then converts it into a string for the log dictionary
+        ip = str(ipaddress.IPv4Address(random.randint(0, 2**32 - 1))) # It will randomly pick a number between 0 and the max possible IPv4 address, and it will make it look like a real IP address then converts it into a string for the log dictionary
         country = random.choice(countries) # picks a random country origin I specified earlier for the log entry
         log_entry = {   # Here I created a dictionary to hold these key value pairs to represent a full log entry
             'timestamp': timestamp,
